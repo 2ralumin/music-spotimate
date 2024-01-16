@@ -20,6 +20,6 @@ public class AlbumDetailResponse {
     private int total_tracks;
     private List<String> genres;
 
-    private TracksListResponse tracks;
+   // private TracksListResponse tracks;
 
 }
