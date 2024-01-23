@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
+import kodong.spotimate.global.header.HeaderService;
 import kodong.spotimate.music.album.dto.response.AlbumDetailResponse;
 import kodong.spotimate.music.album.dto.response.TracksListResponse;
 import kodong.spotimate.music.album.service.AlbumService;
@@ -23,6 +24,7 @@ import java.util.Map;
 @Slf4j
 public class AlbumController {
     private final AlbumService albumService;
+    private final HeaderService headerService;
 
     @GetMapping("/api/music/album/{id}")
     public ResponseEntity<AlbumDetailResponse> getAlbumDetail(@PathVariable String id,
@@ -30,7 +32,7 @@ public class AlbumController {
                                                               HttpServletRequest httpServletRequest) throws JsonProcessingException {
 
         String accessToken = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
-        HttpHeaders httpHeaders = albumService.makeHeader(accessToken);
+        HttpHeaders httpHeaders = headerService.makeHeader(accessToken);
         AlbumDetailResponse response = albumService.getAlbumDetail(id, market,httpHeaders);
 
         return ResponseEntity.ok().body(response);
@@ -43,7 +45,7 @@ public class AlbumController {
                                                              @RequestParam int offset,
                                                              HttpServletRequest httpServletRequest) throws JsonProcessingException {
         String accessToken = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
-        HttpHeaders httpHeaders = albumService.makeHeader(accessToken);
+        HttpHeaders httpHeaders = headerService.makeHeader(accessToken);
         TracksListResponse response = albumService.getTracks(id, market, limit, offset, httpHeaders);
         return ResponseEntity.ok().body(response);
     }

@@ -1,4 +1,4 @@
-package kodong.spotimate.music.album.dto.response;
+package kodong.spotimate.global.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
