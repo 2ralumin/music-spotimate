@@ -1,11 +1,11 @@
 package kodong.spotimate.music.album.dto.response;
 
+import kodong.spotimate.global.dto.Images;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
 import java.util.List;
 
 @Data

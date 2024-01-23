@@ -21,14 +21,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class AlbumService {
 
-    //헤더 생성
-    public HttpHeaders makeHeader(String accessToken){
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Authorization", accessToken);
-        httpHeaders.add("Host", "api.spotify.com");
-        httpHeaders.add("Content-type", "application/json");
-        return httpHeaders;
-    }
     public AlbumDetailResponse getAlbumDetail(String id, String market, HttpHeaders httpHeaders) throws JsonProcessingException {
 
         RestTemplate restTemplate = new RestTemplate();
